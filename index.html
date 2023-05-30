@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="expense-form">
+        <div class="form-group">
+          <label for="expenseamount">Expense Amount : </label>
+          <input type="number" class="form-control" id="expenseamount" placeholder="Enter expense amount">
+        </div>
+        
+        <div class="form-group">
+            <label for="expensedescription">Expense Description</label>
+            <input type="text" class="form-control" id="expensedescription" placeholder="Enter expense Description">
+        </div>
+
+        <div class="form-group">
+            <label for="expensecategory">Choose a category for expense:</label>
+            <select name="category" id="category">
+                <option value="fuel">fuel</option>
+                <option value="food">food</option>
+                <option value="electricity">Electricity</option>
+                <option value="entertainment">Entertainment</option>
+            </select>
+        </div>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <ul id="expense-list"></ul>
+    <script type="text/javascript" src="main.js"></script> 
+</body>
+</html>
