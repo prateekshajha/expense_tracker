@@ -7,6 +7,9 @@ var expenseList=document.getElementById("expense-list");
 // console.log(expenseDesc);
 // console.log(expenseCategory);
 
+
+localStorage.clear();
+
 expenseList.addEventListener('click',removeItem);
 // var editBtn=document.getElementById("edit-btn");
 // editBtn.addEventListener('click',editItem);
@@ -14,10 +17,6 @@ expenseList.addEventListener('click',removeItem);
 
 expenseForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    // notesStorage.push(noteInput.value);
-    // localStorage.setItem("notes", JSON.stringify(notesStorage));
-    // listBuilder(noteInput.value);
-    // noteInput.value = "";
 
     var deleteBtn=document.createElement('button');
     deleteBtn.className='btn btn-danger btn-sm delete';
@@ -29,15 +28,16 @@ expenseForm.addEventListener("submit", (e) => {
     editBtn.appendChild(document.createTextNode('EDIT'));
 
     var expenseDetails=[expenseAmount.value,expenseDesc.value,expenseCategory.value];
-    console.log(expenseDetails);
-
+    localStorage.setItem(expenseDesc.value,expenseDetails);
     var li= document.createElement('li');
     li.className='expense-items';
+    li.id=expenseDesc.value;
     li.appendChild(document.createTextNode(expenseDetails));
     li.appendChild(deleteBtn);
     li.appendChild(editBtn);
     expenseList.appendChild(li);
 
+    expenseDetails = "";
 
     
   });
@@ -46,10 +46,15 @@ expenseForm.addEventListener("submit", (e) => {
     if(e.target.classList.contains('delete')){
         var li= e.target.parentElement;
         expenseList.removeChild(li);
+        localStorage.removeItem(e.target.parentElement.id);
+        // console.log(e.target.parentElement.id);
+
+
+
     }
 
     else if(e.target.classList.contains('edit')){
-        console.log("Edit button clicked.")
+      console.log(Array.from(localStorage.getItem(e.target.parentElement.id)));
     }
   }
 
